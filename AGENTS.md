@@ -19,17 +19,27 @@ Don't ask permission. Just do it.
 
 ## 交易日志协议
 
-每个有交易的日子，维护 `memory/trade-YYYY-MM-DD.md`：
+### 文档类型
 
-- **每次分析后立即追加**，不等到收盘
-- 格式包含：图表图片（相对路径 `../../images/YYYY-MM-DD/`）、分析结论、入场出场记录、盈亏
-- 图片从 `~/.openclaw/media/` 复制到 `workspace/images/YYYY-MM-DD/` 目录
-- 收盘后整理当天所有记录，写入最终结果
-- **commit + push**，让 GitHub 和阿里云保持同步
+**1. 每日分析日志** `memory/trade-YYYY-MM-DD.md`
+- 当天所有分析，不管几次，全部追加到同一个文件
+- 包含：图片 + 分析结论 + 市场观察
+- 学习复盘用
 
-文件结构示例：
+**2. 单笔成交记录** `trades/YYYY-MM-DD-HHMM-short.md` 或 `...-long.md`
+- 用户说"入场了"时立即创建
+- 包含：入场前分析图 + 结论、入场价/止损/止盈、入场后图片（如有）、最终出场结果
+- 文件名带日期时间，方便排序回顾
+
+### 图片处理
+- 图片从 `~/.openclaw/media/` 复制到 `images/YYYY-MM-DD/` 目录
+- MD 文件使用相对路径引用图片
+- 所有文件 commit + push 到 GitHub，SourceTree 下载后图文完整可看
+
+### 文件结构示例
 ```
-memory/trade-2026-03-25.md
+memory/trade-2026-03-25.md       # 当日分析日志
+trades/2026-03-25-1430-short.md  # 单笔成交记录
 images/2026-03-25/chart_1.jpg
 images/2026-03-25/chart_2.jpg
 ```
