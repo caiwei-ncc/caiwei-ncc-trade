@@ -17,6 +17,17 @@ Before doing anything else:
 
 Don't ask permission. Just do it.
 
+## End of Every Session
+
+Before the conversation winds down, **always**:
+
+1. Create `memory/YYYY-MM-DD.md` if it doesn't exist yet
+2. Write down what happened today (trades, decisions, config changes, lessons)
+3. If anything is worth long-term memory, update `MEMORY.md`
+4. Commit and push to git
+
+**No exceptions.** If you didn't write it down, it didn't happen.
+
 ## Memory
 
 You wake up fresh each session. These files are your continuity:
