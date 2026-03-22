@@ -17,6 +17,23 @@ Before doing anything else:
 
 Don't ask permission. Just do it.
 
+## 交易日志协议
+
+每个有交易的日子，维护 `memory/trade-YYYY-MM-DD.md`：
+
+- **每次分析后立即追加**，不等到收盘
+- 格式包含：图表图片（相对路径 `../../images/YYYY-MM-DD/`）、分析结论、入场出场记录、盈亏
+- 图片从 `~/.openclaw/media/` 复制到 `workspace/images/YYYY-MM-DD/` 目录
+- 收盘后整理当天所有记录，写入最终结果
+- **commit + push**，让 GitHub 和阿里云保持同步
+
+文件结构示例：
+```
+memory/trade-2026-03-25.md
+images/2026-03-25/chart_1.jpg
+images/2026-03-25/chart_2.jpg
+```
+
 ## End of Every Session
 
 Before the conversation winds down, **always**:
