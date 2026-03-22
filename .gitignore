@@ -1,0 +1,13 @@
+.env
+.env.*
+*.log
+.DS_Store
+node_modules/
+dist/
+build/
+.tmp/
+.cache/
+*.sqlite
+*.db
+auth-profiles.json
+secrets.json
