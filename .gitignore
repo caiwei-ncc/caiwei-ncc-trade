@@ -11,3 +11,4 @@ build/
 *.db
 auth-profiles.json
 secrets.json
+.obsidian/
