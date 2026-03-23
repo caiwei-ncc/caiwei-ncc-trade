@@ -11,12 +11,14 @@
             "id": "e5e5bfde896a7328",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "corgi_1772854910.jpg"
+                "file": "MEMORY.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "corgi_1772854910"
+              "icon": "lucide-file",
+              "title": "MEMORY"
             }
           }
         ]
@@ -183,8 +185,13 @@
   },
   "active": "e5e5bfde896a7328",
   "lastOpenFiles": [
-    "corgi_1772809747.jpg",
+    "s2.png",
+    "MEMORY.md",
     "tradingview/chan-theory-lessons-37-54.md",
+    "claude_app_screen.png",
+    "claude_app_screen_small.png",
+    "corgi_1772854910.jpg",
+    "corgi_1772809747.jpg",
     "corgi_1772809655.jpg",
     "AGENTS.md",
     "memory/2026-03-23.md",
