@@ -5,6 +5,15 @@
 
 ---
 
+## 基础设施架构（2026-03-22 完成）
+
+- **双端部署**：OpenClaw 同时运行在 Mac（本机，连飞书）和阿里云服务器
+- **阿里云服务器**：Ubuntu 22.04，hostname `iZmj7cqb1nl6lp5rzrhhpgZ`
+- **代理**：阿里云服务器部署 sing-box，出站走韩国干净 IP（203.248.81.252:7778），飞书直连
+- **同步**：workspace 通过 GitHub（caiwei-ncc/caiwei-ncc-trade）双端同步，Mac ↔ GitHub ↔ 阿里云
+- **heartbeat**：1小时一次（已从30分钟改为1小时）
+- **每日9点**：cron job 自动发飞书开盘问候，提醒 /new
+
 ## 关于用户
 
 - 飞书 ID：ou_07cb51b84b10cd7859115a46a54cf71b
