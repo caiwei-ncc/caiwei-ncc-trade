@@ -80,7 +80,7 @@
 ## 工具与设置
 
 - 模型：Sonnet（日常）/ Opus（图表分析，分析后自动切回）
-- **切换模型用正确字符串**：Sonnet = `anthropic/claude-sonnet-4-6`，Opus = `anthropic/claude-opus-4-6`（不带日期后缀，否则会用到旧版本）
+- **切换模型必须用正确字符串**：Sonnet = `anthropic/claude-sonnet-4-6`，Opus = `anthropic/claude-opus-4-6`（不带日期后缀！带日期后缀会调用旧版本，价格更贵）
 - 图表分析回复顶部必须标注：`🧠 模型：Claude Opus 4.6`
 - compaction targetRatio：0.3（已写入 openclaw.json）
 - Chan Theory 指标：¥300/月，下个月到期，暂定不续费
