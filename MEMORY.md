@@ -33,6 +33,7 @@
 |------|------|
 | `TRADINGVIEW.md` | 缠论 GBP/USD 分析协议（自动加载，勿覆盖） |
 | `tradingview/chan-definitions.md` | 缠论形式化定义手册（每次分析前必须 read） |
+| `tradingview/audit-checklist.md` | 分析审计清单（用户说"审计"时 read） |
 | `tradingview/chan-theory-lessons-*.md` | 原始课程文档（按需 read） |
 | `memory/YYYY-MM-DD.md` | 每日交易记录 |
 
@@ -79,8 +80,9 @@
 ## 工具与设置
 
 - 模型：Sonnet（日常）/ Opus（图表分析，分析后自动切回）
+- **切换模型用正确字符串**：Sonnet = `anthropic/claude-sonnet-4-6`，Opus = `anthropic/claude-opus-4-6`（不带日期后缀，否则会用到旧版本）
 - 图表分析回复顶部必须标注：`🧠 模型：Claude Opus 4.6`
-- compaction targetRatio：0.3
+- compaction targetRatio：0.3（已写入 openclaw.json）
 - Chan Theory 指标：¥300/月，下个月到期，暂定不续费
 - 指标设置：严格包含-STRICT + 严格延续-STRICT + 宽笔-LOOSE
 
