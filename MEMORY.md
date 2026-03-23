@@ -74,6 +74,12 @@
 - Chan Theory 指标：¥300/月，下个月到期，暂定不续费
 - 指标设置：严格包含-STRICT + 严格延续-STRICT + 宽笔-LOOSE
 
+### OpenClaw 双端部署
+- **Mac（本机）**：主实例，连接飞书，日常使用
+- **阿里云服务器**（iZmj7cqb1nl6lp5rzrhhpgZ）：备用实例，独立部署
+- workspace 通过 GitHub 仓库（caiwei-ncc/caiwei-ncc-trade）同步
+- 阿里云配置 sing-box 代理，出口 IP：203.248.81.252:7778
+
 ---
 
 ## 周期复盘记录
