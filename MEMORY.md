@@ -5,7 +5,7 @@
 
 ---
 
-## 基础设施架构（2026-03-22 完成）
+## 基础设施架构（2026-03-22 完成，2026-03-23 补全）
 
 - **双端部署**：OpenClaw 同时运行在 Mac（本机，连飞书）和阿里云服务器
 - **阿里云服务器**：Ubuntu 22.04，hostname `iZmj7cqb1nl6lp5rzrhhpgZ`
@@ -63,6 +63,15 @@
 - 地址：`203.248.81.252:7778:X5Z6S9A3z8y3:d0A4S3W4v3U3`
 - 过期：**2026年4月19日 18:40:41**
 - 协议：待确认（SOCKS5 或 HTTP）
+
+---
+
+## 交易日志格式（已确认）
+
+- 单笔成交：`trades/YYYY-MM-DD-HHMM-方向.md`
+- 每日分析：`memory/trade-YYYY-MM-DD.md`
+- 图片：`images/YYYY-MM-DD/chart_xxx.jpg`，MD 里用 `|960` 统一宽度
+- 风格：简洁，无表格，无彩色块，参考 `trades/2026-03-23-demo-short.md`
 
 ---
 
