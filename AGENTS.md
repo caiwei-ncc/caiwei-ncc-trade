@@ -32,9 +32,11 @@ Don't ask permission. Just do it.
 - 文件名带日期时间，方便排序回顾
 
 ### 图片处理
-- 图片从 `~/.openclaw/media/` 复制到 `images/YYYY-MM-DD/` 目录
-- MD 文件使用相对路径引用图片
-- 所有文件 commit + push 到 GitHub，SourceTree 下载后图文完整可看
+- 用户通过飞书发的图片自动保存到 `~/.openclaw/media/inbound/`，文件名为 UUID
+- 每次分析完，立即将本次用到的图片复制到 `workspace/images/YYYY-MM-DD/` 并重命名（如 `chart_1_4h.jpg`）
+- MD 文件使用相对路径引用图片（如 `../../images/2026-03-25/chart_1_4h.jpg`）
+- 所有文件 commit + push 到 GitHub，Obsidian 和 SourceTree 打开后图文完整可看
+- `~/.openclaw/media/inbound/` 里的原始文件可定期清理，workspace/images/ 才是永久存档
 
 ### 文件结构示例
 ```
