@@ -2,8 +2,8 @@
 
 _Learn about the person you're helping. Update this as you go._
 
-- **Name:** haolema
-- **What to call them:** haolema
+- **Name:** 才为
+- **What to call them:** 才为
 - **Pronouns:** _(未知)_
 - **Timezone:** Asia/Shanghai（GMT+8）
 - **Notes:** 程序员背景，缠论交易者，外汇实验账户（Dukascopy），A股主账户约70万
