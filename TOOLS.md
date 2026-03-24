@@ -46,6 +46,10 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 ### 本机（Mac）
 - 不启用上述 `videnx/gpt-5.4` 规则
 - 本机仍按本机已配置模型执行，不假设存在 GPT-5.4 中转
+- 本机为备用 OpenClaw，不承担主力工作流
+- 本机关闭所有 heartbeat
+- 本机不生成每日 `trade` 交易文件
+- 交易记录、交易分析文件、主工作流统一由阿里云服务器负责
 
 ### 口令映射（仅阿里云服务器生效）
 - 切换chatgpt → `videnx/gpt-5.4`
