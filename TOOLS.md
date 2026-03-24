@@ -35,6 +35,29 @@ Things like:
 
 Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
 
+## 模型切换规则
+
+### 阿里云服务器专用（hostname: `iZmj7cqb1nl6lp5rzrhhpgZ`）
+- 默认模型：`videnx/gpt-5.4`
+- 图片 / 行情 / 图表分析：切到 `anthropic/claude-opus-4-6`
+- 分析完成后：自动切回 `videnx/gpt-5.4`
+- 当 `videnx/gpt-5.4` 报错、异常或不可用时：切到 `anthropic/claude-sonnet-4-6`
+
+### 本机（Mac）
+- 不启用上述 `videnx/gpt-5.4` 规则
+- 本机仍按本机已配置模型执行，不假设存在 GPT-5.4 中转
+
+### 口令映射（仅阿里云服务器生效）
+- 切换chatgpt → `videnx/gpt-5.4`
+- 切换opus → `anthropic/claude-opus-4-6`
+- 切换sonnet → `anthropic/claude-sonnet-4-6`
+
+## Git 提交信息规则
+
+- 阿里云服务器提交时：commit message 前缀加 `[阿里云]`
+- 本机（Mac）提交时：commit message 前缀加 `[本地]`
+- 目的：方便区分这次更新来自哪台机器
+
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
