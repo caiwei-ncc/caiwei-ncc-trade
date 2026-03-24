@@ -136,6 +136,16 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - 交易分析日志中，不同时间的分析属于不同记录，**只追加，不覆盖，不删除旧版分析**
 - 即使后续有更严格的重做版本，原始版本也必须完整保留在文件中
 
+## "开启会话"口令
+
+当用户说"开启会话"时，执行以下流程：
+1. 检查今天的 memory 有没有需要补记的内容
+2. 如果有，写入 memory/YYYY-MM-DD.md
+3. commit + push
+4. 回复用户："已保存完毕，请发 `/new`"
+
+用户发 `/new` 后新会话自动开始，workspace 文件会重新加载，规则不会丢失。
+
 ## Git 提交信息规则
 
 - 阿里云服务器提交时：commit message 前缀加 `[阿里云]`
