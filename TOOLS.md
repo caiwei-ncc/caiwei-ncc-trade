@@ -1,6 +1,6 @@
 # TOOLS.md - Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+Skills define _how_ tools work. This file is for _your_ specifics - the stuff that's unique to your setup.
 
 ## What Goes Here
 
@@ -81,7 +81,8 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - 如需补充审计、结果、复盘，只能在正文后追加，**不得改写原始分析正文**
 - 文档中的分析内容应与飞书实际回复尽量保持一致，保证后续复盘与学习价值
 - 图表分析排版统一改为：**4H图 → 4H分析 → 1H图 → 1H分析 → 15M图 → 15M分析 → 最终结论**
-- 不再使用“三张图连续放在前面、分析统一堆在后面”的排版
+- 不再使用"三张图连续放在前面、分析统一堆在后面"的排版
+- 图片宽度统一使用 `|1300`
 - 交易分析模板、日志格式、图文结构属于风控流程的一部分，**禁止临场自由发挥**
 - 每次图表分析完成后，**必须在最终回复末尾输出 12 步执行状态表**，格式如下：
 
@@ -102,7 +103,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 | 12 | push | |
 ```
 
-- 每完成一步填 ✅，不适用填 —，未完成填 ❌
+- 每完成一步填 ✅，不适用填 -，未完成填 ❌
 - 表里有任何空格或 ❌，说明流程未完成
 - **此表不可省略**
 - 交易分析日志中，不同时间的分析属于不同记录，**只追加，不覆盖，不删除旧版分析**
