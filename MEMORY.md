@@ -91,6 +91,8 @@
 - **阿里云服务器**（iZmj7cqb1nl6lp5rzrhhpgZ）：备用实例，独立部署
 - workspace 通过 GitHub 仓库（caiwei-ncc/caiwei-ncc-trade）同步
 - 阿里云配置 sing-box 代理，出口 IP：203.248.81.252:7778
+- **模型切换规则按主机区分**：阿里云服务器默认用 `videnx/gpt-5.4`，图片/行情/图表分析切 `opus`，5.4 报错时用 `sonnet`；本机（Mac）不启用这套 5.4 规则
+- **Git 提交标记规则**：阿里云提交前缀 `[阿里云]`，本地提交前缀 `[本地]`
 
 ---
 
