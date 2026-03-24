@@ -60,8 +60,22 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 - 凡是交易、行情、图表、复盘、入场/止损/止盈建议，**不得擅自改模板、改风格、改流程**
 - 必须严格沿用既有交易分析模板，不允许用普通聊天口吻替代
-- 图片 / 行情 / 图表分析时：先切 `anthropic/claude-opus-4-6`，分析完成后自动切回 `videnx/gpt-5.4`
-- 图表分析回复顶部必须带：`🧠 模型：Claude Opus 4.6`
+- 交易 / 图表分析固定流程：
+  1. 切 `anthropic/claude-opus-4-6`
+  2. 读 `TRADINGVIEW.md`
+  3. 读 `tradingview/chan-definitions.md`
+  4. 按固定模板分析
+  5. 切回 `videnx/gpt-5.4`
+  6. 明确告知当前已切换的模型名称
+  7. 若属于当天分析，更新或创建 `memory/trade-YYYY-MM-DD.md`
+  8. 如果涉及真实入场，再建 `trades/YYYY-MM-DD-HHMM-方向.md`
+  9. 保存图片到 `images/YYYY-MM-DD/`
+  10. 更新 daily memory（必要时）
+  11. commit
+  12. push
+- 后续每进行一步操作，都要明确告知用户，不得省略状态播报
+- `🧠 模型：Claude Opus 4.6` 只有在**真实切换到 Opus 且已开始该次分析**后才能写，不能作为固定装饰文案
+- 同理，`已读取 TRADINGVIEW.md`、`已读取 chan-definitions.md`、`已切回 videnx/gpt-5.4`、`已更新日志`、`已 commit`、`已 push` 等表述，必须在**真实完成该步骤后**才能说
 - 分析前必须先读 `TRADINGVIEW.md` 与 `tradingview/chan-definitions.md`，不得凭记忆直接分析
 - 交易分析模板、日志格式、图文结构属于风控流程的一部分，**禁止临场自由发挥**
 
