@@ -105,6 +105,8 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - 每完成一步填 ✅，不适用填 —，未完成填 ❌
 - 表里有任何空格或 ❌，说明流程未完成
 - **此表不可省略**
+- 交易分析日志中，不同时间的分析属于不同记录，**只追加，不覆盖，不删除旧版分析**
+- 即使后续有更严格的重做版本，原始版本也必须完整保留在文件中
 
 ## Git 提交信息规则
 
