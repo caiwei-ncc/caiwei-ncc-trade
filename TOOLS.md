@@ -77,6 +77,9 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - `🧠 模型：Claude Opus 4.6` 只有在**真实切换到 Opus 且已开始该次分析**后才能写，不能作为固定装饰文案
 - 同理，`已读取 TRADINGVIEW.md`、`已读取 chan-definitions.md`、`已切回 videnx/gpt-5.4`、`已更新日志`、`已 commit`、`已 push` 等表述，必须在**真实完成该步骤后**才能说
 - 分析前必须先读 `TRADINGVIEW.md` 与 `tradingview/chan-definitions.md`，不得凭记忆直接分析
+- 交易分析日志中的**分析正文**，默认以飞书当次实际发出的回复原文为准，尽量原样入档
+- 如需补充审计、结果、复盘，只能在正文后追加，**不得改写原始分析正文**
+- 文档中的分析内容应与飞书实际回复尽量保持一致，保证后续复盘与学习价值
 - 交易分析模板、日志格式、图文结构属于风控流程的一部分，**禁止临场自由发挥**
 
 ## Git 提交信息规则
