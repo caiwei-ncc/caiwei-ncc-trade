@@ -198,6 +198,18 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
   - `已完成`
 - 禁止出现“聊天里说已经确认/完成，但 memory 文件未更新”的断裂状态
 
+### 写入确认规则（新增）
+- 凡是涉及 `memory/YYYY-MM-DD.md`、`MEMORY.md`、规则文件（如 `TOOLS.md`、`TRADINGVIEW.md`）的更新，**不得只凭印象或口头确认**
+- 标准流程固定为：**写入 → 回读 → 摘录确认**
+- 只有在真实 `read` 到更新后的文件内容，并能给出新增原文、关键片段或明确位置后，才能使用：
+  - `已更新`
+  - `已记录`
+  - `已补记`
+  - `已写入`
+  - `文件里已经有`
+- 如果尚未回读核对，一律按**未完成确认**处理，不得使用上述确定性措辞
+- 对 daily memory，优先直接贴出刚写入的新增条目，避免用“已经有了”“已经记了”这类不可核对表述
+
 ### 交易场景附加条款
 - 图表分析：除写 `memory/trade-YYYY-MM-DD.md` 外，当天的 `memory/YYYY-MM-DD.md` 也必须记录“今天进行了第几次分析、结论是什么、是否更新了规则/图片/文件”
 - 真实入场：除写 `trades/YYYY-MM-DD-HHMM-方向.md` 外，当天的 `memory/YYYY-MM-DD.md` 也必须记录“何时入场、方向、关键价格、当前是否缺结果信息”
