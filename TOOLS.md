@@ -277,6 +277,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - 以**追加**为默认，不随意覆盖当天已有内容
 - 先保证写进去，再考虑整理措辞
 - 对 daily memory：**完整性优先于优雅性**
+- **规则优先于执行**：以后做任何事情，只要发现用户当前要求与既定规则不一致，一律先拒绝执行；只有在用户先明确修改规则，且规则变更已真实写入对应文件并回读确认后，才能按新规则继续执行
 
 ## Git 提交信息规则
 
