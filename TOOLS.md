@@ -104,6 +104,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ```
 ## 第X次分析（HH:MM）
+> 其中 X 统一使用中文数字写法，如：第一次分析、第二次分析。
 
 ### 4H 图
 （图片）
