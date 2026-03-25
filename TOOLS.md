@@ -56,6 +56,15 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - 切换opus → `anthropic/claude-opus-4-6`
 - 切换sonnet → `anthropic/claude-sonnet-4-6`
 
+### 模型能力顺序与统一规则（阿里云服务器）
+- 能力顺序统一为：`anthropic/claude-opus-4-6` > `videnx/gpt-5.4` > `anthropic/claude-sonnet-4-6`
+- 聊天主模型与图片工具模型，默认按同一顺序理解与播报
+- 默认主力模型：`videnx/gpt-5.4`
+- 高质量交易 / 图表 / 行情 / 复盘 / 审计分析：切到 `anthropic/claude-opus-4-6`
+- 当 `videnx/gpt-5.4` 异常、不可用、超时或表现失常时：切到 `anthropic/claude-sonnet-4-6`
+- 图片工具若发生模型切换，必须明确告知用户；不得静默 fallback 到未约定模型
+- 交易场景优先保证时效性：若某模型失败或等待过久，应尽快切换到下一档，并如实播报
+
 ## 交易 / 图表分析执行纪律
 
 - 凡是交易、行情、图表、复盘、入场/止损/止盈建议，**不得擅自改模板、改风格、改流程**
@@ -76,6 +85,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - 后续每进行一步操作，都要明确告知用户，不得省略状态播报
 - `🧠 模型：Claude Opus 4.6` 只有在**真实切换到 Opus 且已开始该次分析**后才能写，不能作为固定装饰文案
 - **用了什么模型就写什么模型，切了模型也必须明确告诉用户**
+- 若图片工具与聊天主模型发生切换，必须分别播报“当前聊天主模型”和“当前图片工具模型”
 - 若本次分析过程中发生模型切换、工具链 fallback、图片工具独立调用其他模型（如 Opus 4.5 / 其他模型），必须如实说明；不得把“当前会话模型”偷换成“整条分析链路唯一模型”
 - 若只切了会话模型，但图片分析 / 其他工具链实际使用了不同模型，必须区分表述，例如：`分析会话模型`、`图片工具链模型`，不得笼统写成“本次分析模型就是 X”
 - 只有在**分析正文确实由该模型直接完成，且中途没有其他模型 fallback 污染表述**时，才可以把顶部模型标注理解为本次分析主模型；否则必须补充说明链路中的其他模型
