@@ -106,6 +106,10 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 ## 第X次分析（HH:MM）
 > 其中 X 统一使用中文数字写法，如：第一次分析、第二次分析。
 
+- 已切到 `anthropic/claude-opus-4-6`
+- 已读取 `TRADINGVIEW.md`
+- 已读取 `tradingview/chan-definitions.md`
+
 ### 4H 图
 （图片）
 
@@ -155,6 +159,8 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - **固定模板以用户确认的“昨天版样式”为母版；若现有字段模板与昨天版成品节奏冲突，以昨天版样式为准继续收紧**
 - 昨天版样式的核心要求：短、稳、整齐、每条 bullet 默认 1 句、每个级别只回答本级别问题、最终结论偏执行语言、关键观察位保持短句观察项
 - 不得临场改标题层级、字段顺序、字段名称、图片位置
+- 每次分析标题下方固定保留 3 条执行确认块：`已切到 anthropic/claude-opus-4-6`、`已读取 TRADINGVIEW.md`、`已读取 tradingview/chan-definitions.md`
+- 上述执行确认块只允许写真实已完成项，不得写流程宣言式文案，不得前置到分析标题上方
 - 交易分析模板、日志格式、图文结构属于风控流程的一部分，**禁止临场自由发挥**
 - 每次图表分析完成后，**必须在最后只发 1 条完整成品消息**；不得拆成“分析正文一条 + 状态更新一条”分开发送，避免飞书侧只显示后一条、导致前面正文丢失、折叠或不可见
 - **交易结果优先，归档后置**：交易 / 图表分析中，分析正文一旦完成，应优先先把最终成品消息发给用户；不得为了保存图片、写 memory、commit、push 而延迟交易结果送达
