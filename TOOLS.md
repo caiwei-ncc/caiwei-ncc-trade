@@ -212,9 +212,9 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - 交易分析日志中，不同时间的分析属于不同记录，**只追加，不覆盖，不删除旧版分析**
 - 即使后续有更严格的重做版本，原始版本也必须完整保留在文件中
 
-## "开启会话"口令
+## "更新记忆"口令
 
-当用户说"开启会话"时，执行以下流程：
+当用户说"更新记忆"时，执行以下流程：
 1. 检查今天的 memory 有没有需要补记的内容
 2. 如果有，写入 memory/YYYY-MM-DD.md
 3. commit + push
