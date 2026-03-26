@@ -73,20 +73,23 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 - 凡是交易、行情、图表、复盘、入场/止损/止盈建议，**不得擅自改模板、改风格、改流程**
 - 必须严格沿用既有交易分析模板，不允许用普通聊天口吻替代
-- 交易 / 图表分析固定流程：
-  1. 切 `anthropic/claude-opus-4-6`
-  2. 读 `TRADINGVIEW.md`
-  3. 读 `tradingview/chan-definitions.md`
-  4. 按固定模板分析
-  5. 切回 `videnx/gpt-5.4`
-  6. 明确告知当前已切换的模型名称
-  7. 若属于当天分析，更新或创建 `memory/trade-YYYY-MM-DD.md`
-  8. 如果涉及真实入场，再建 `trades/YYYY-MM-DD-HHMM-方向.md`
-  9. 保存图片到 `images/YYYY-MM-DD/`
-  10. 更新 daily memory（必要时）
-  11. commit
-  12. push
+- 交易 / 图表分析固定流程（新版，2026-03-26 晚重构）：
+  1. 识别这是 **K 线交易图 / 行情图 / 图表分析图**
+  2. 若是交易图，先判断当前是否已满足 **Opus 已确认执行**
+  3. 若当前不是 Opus / 未确认 Opus：停止本轮正式分析，直接提示用户先缓存上下文、`/new`、发送 `/model anthropic/claude-opus-4-6`，待前台切换成功回执后重新发图
+  4. 只有在第 2 步已满足，或用户**明确直接说**“这次不用 Opus，你直接分析”时，才允许继续进入正式分析
+  5. 读取 `TRADINGVIEW.md`
+  6. 读取 `tradingview/chan-definitions.md`
+  7. 按固定模板分析并先把正式分析结果发给用户
+  8. 若属于当天分析，更新或创建 `memory/trade-YYYY-MM-DD.md`
+  9. 如果涉及真实入场，再建 `trades/YYYY-MM-DD-HHMM-方向.md`
+  10. 保存图片到 `images/YYYY-MM-DD/`
+  11. 更新 daily memory（必要时）
+  12. commit + push
 - 后续每进行一步操作，都要明确告知用户，不得省略状态播报
+- 上述固定流程里的第 1 步只负责识别交易图；若在第 2 步判断当前不是 Opus / 未确认 Opus，则 **第 5-12 步全部不执行**
+- 用户切到 Opus 并重新发图后，视为**新一轮正式分析**，必须从第 1 步重新开始；但由于此时第 2 步已满足，会自然直接进入第 5-12 步，不再额外重复拦截
+- 只有真正进入第 5-12 步的轮次，才算正式交易分析轮次；未通过第 2 步而被拦截的轮次，不得记成“第几次分析”，不得混入正式 trade 日志正文
 - `🧠 模型：Claude Opus 4.6` 只有在**真实切换到 Opus 且已开始该次分析**后才能写，不能作为固定装饰文案
 - **用了什么模型就写什么模型，切了模型也必须明确告诉用户**
 - 若图片工具与聊天主模型发生切换，必须分别播报“当前聊天主模型”和“当前图片工具模型”
