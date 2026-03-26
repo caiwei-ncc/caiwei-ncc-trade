@@ -298,6 +298,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - 阿里云服务器提交时：commit message 前缀加 `[阿里云]`
 - 本机（Mac）提交时：commit message 前缀加 `[本地]`
 - 目的：方便区分这次更新来自哪台机器
+- 新规则（2026-03-26）：凡是 `TASKS-2026.md`、`memory/YYYY-MM-DD.md`、`MEMORY.md`、规则文件等这类文档型修改，完成后默认**直接 commit + push**，不等用户追问；因为用户通常在本地查看结果，不希望反复催问“有没有提交”
 
 ---
 
