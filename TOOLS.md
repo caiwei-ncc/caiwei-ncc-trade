@@ -103,6 +103,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - 如需补充审计、结果、复盘，只能在正文后追加，**不得改写原始分析正文**
 - 文档中的分析内容应与飞书实际回复尽量保持一致，保证后续复盘与学习价值
 - 原则：**回复模板决定正文，文档模板负责归档；文档不是重写本，而是归档本**
+- **飞书回复不嵌图，文档归档才带图**：交易分析的飞书回复正文中，不得使用 `MEDIA:` 引用 inbound 原图路径（会导致 LocalMediaAccessError）；归档阶段先将图片从 `/root/.openclaw/media/inbound/` 复制到 `workspace/images/YYYY-MM-DD/`，trade 日志中用 `../../images/YYYY-MM-DD/chart_x.jpg|1300` 相对路径引用
 - 图片宽度统一使用 `|1300`
 - 图表分析日志固定结构模板如下，**每次必须严格按此结构输出，不得合并或嵌套**：
 
