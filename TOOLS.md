@@ -247,6 +247,11 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
   - 或当前模型核对结果不是 Opus
   则助手**不得继续输出正式交易分析正文**
 - 在上述情况下，助手必须直接提示用户：当前这张 K 线交易图按规则默认应使用 Opus；当前不是 Opus / 未确认 Opus，请先缓存上下文、新建聊天、切到 `anthropic/claude-opus-4-6` 后再重新发图
+- **新规则（2026-03-26 晚再补充）**：以后凡是要求用户切模型的提示，助手都必须顺手附上**可直接复制的 `/model ...` 指令**，不得只写模型名、不写指令
+- 当前约定的常用切模指令如下：
+  - 切到 Opus：`/model anthropic/claude-opus-4-6`
+  - 切回默认聊天模型：`/model videnx/gpt-5.4`
+  - 切到 Sonnet：`/model anthropic/claude-sonnet-4-6`
 - 在上述情况下，**不得**再给“模型未确认下的临时交易分析”
 - 只有在用户明确直接表示：**这次不用 Opus，你直接分析** 时，助手才可以在非 Opus / 未确认 Opus 状态下继续；且必须在正文最前明确标注：
   - `本次按用户明确要求，未使用 Opus`
