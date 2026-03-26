@@ -218,6 +218,30 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 用户发 `/new` 后新会话自动开始，workspace 文件会重新加载，规则不会丢失。
 
+## 模型切换确认边界（2026-03-26 晚新增）
+
+- 以后必须严格区分三件事，**不得混写**：
+  1. **系统支持切模**
+  2. **用户前台显式 `/model ...` 切模成功**
+  3. **助手已主动替当前 live chat session 切模成功**
+- 当前已确认：OpenClaw 官方支持用聊天里的 `/model <provider/model>` 对**当前 session** 做模型切换；`/model status` 用于查看模型 / auth / endpoint 状态
+- 当前**未确认**：助手本身拥有“直接替当前 live chat session 执行 `/model ...`”的可用能力
+- 当前**未确认**：存在一个官方、稳定、可核对的“脚本直接切当前 live chat session 模型”入口
+- 因此，今后**不得**再把“系统支持切模”表述成“助手已主动替当前会话切模成功”
+- 对当前 live chat session，`session_status`、session transcript、provider/model 日志、事后工具调用记录，**只能作为后台佐证**；不得冒充前台切模成功确认
+- 对当前 live chat session，只有满足以下任一条件时，才可把切到某模型表述为 `已确认执行`：
+  1. 用户前台显式发送 `/model <provider/model>`，且前台真实出现切模成功回执
+  2. 系统在前台真实弹出用户可见的切模成功回执
+- 若没有上述前台可见回执，则当前 live chat session 的切模状态一律只能写：`未确认`、`准备执行` 或 `执行中`
+- 以后凡是交易 / 图表 / 行情分析，如果前台没有出现用户可见的 Opus 切模成功回执，就不得在正文或说明位写：
+  - `已切到 anthropic/claude-opus-4-6`
+  - `🧠 模型：Claude Opus 4.6`
+  - `本次 Opus 已确认执行`
+- 在这种情况下，如仍继续分析，必须明确写：
+  - `本次分析正文模型：未确认`
+  - `原因：当前无前台可见 Opus 切模成功回执`
+- 配置级默认模型修改、`channels.modelByChannel`、CLI `openclaw models set ...`、或其他非当前 live chat session 的 override，只能表述为：`配置层已修改` / `默认路由已修改`；**不得**表述成“当前这条聊天已切模成功”
+
 ## 状态播报真实性铁律
 
 - 以后所有关键状态播报，统一只允许使用三种状态词：`准备执行`、`执行中`、`已确认执行`
