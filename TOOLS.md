@@ -64,6 +64,9 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - 当 `videnx/gpt-5.4` 异常、不可用、超时或表现失常时：切到 `anthropic/claude-sonnet-4-6`
 - 图片工具若发生模型切换，必须明确告知用户；不得静默 fallback 到未约定模型
 - 交易场景优先保证时效性：若某模型失败或等待过久，应尽快切换到下一档，并如实播报
+- 新规则（2026-03-26）：若用户发送的是交易 / 行情 / 图表类图片，且本次分析会话已真实切到 `anthropic/claude-opus-4-6`，则图片理解阶段默认优先走 **Anthropic 原生图像请求脚本**，不走 OpenClaw `image` 工具；目的为绕过当前 OpenClaw 图像封装链路的 abort 问题，优先保证交易分析稳定性与时效性
+- 上述原生图像请求分流仅限交易 / 行情 / 图表分析场景；非交易类普通图片理解，仍默认走原有 OpenClaw `image` 工具链路
+- 若原生图像请求成功而 OpenClaw `image` 工具失败，必须明确向用户区分：`交易图表分析图片链路` 与 `普通图片工具链路`，不得混写成“图片功能已整体修复”
 
 ## 交易 / 图表分析执行纪律
 
