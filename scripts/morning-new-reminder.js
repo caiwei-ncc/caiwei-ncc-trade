@@ -1,96 +1,89 @@
 #!/usr/bin/env node
+/**
+ * morning-new-reminder.js
+ * 每日 09:30 发飞书，提醒才为新建对话。
+ * 文案由 Anthropic API 动态生成，风格固定：
+ *   第一行：提醒新建对话（自然语气，不生硬）
+ *   第二行：禅意祝福（愿你……）
+ *   第三行：收束句（简短，有力）
+ *   结尾固定：扎西德勒，吉祥如意！🪷🌿🪷
+ */
+
 const { execFileSync } = require('node:child_process');
+const https = require('node:https');
 
-const lines = [
-  [
-    '新的一天，开个新对话吧。',
-    '愿你心灯常明，所行皆顺。',
-    '今日不必慌，不必赶，清清楚楚走自己的路。',
-  ],
-  [
-    '今天从一个新对话开始。',
-    '愿你心有定处，脚下有路。',
-    '眼前事一件一件来，心里路一步一步明。',
-  ],
-  [
-    '新对话开了吗？今天的事，今天的心。',
-    '愿你所行有定，所遇有解。',
-    '不急着求快，先把心放稳，路自然会展开。',
-  ],
-  [
-    '开个新对话，让今天从清白处起步。',
-    '愿你心不乱，路自宽。',
-    '杂音退下去，属于你的节奏自然会回来。',
-  ],
-  [
-    '今天，一个新对话，一个新的起点。',
-    '愿你念起有觉，所行无悔。',
-    '今天只做清楚的事，只走看见的路。',
-  ],
-  [
-    '先开个新对话，把今天的事放进去。',
-    '愿你尘障渐轻，前路自明。',
-    '心里若静下来，很多答案其实已经在路上了。',
-  ],
-  [
-    '新对话开一个，今天重新来。',
-    '愿你心神安定，百事有应。',
-    '不被外境牵着走，今天就已经赢了一半。',
-  ],
-  [
-    '开个新对话，把昨天的重量搁下。',
-    '愿你心不逐妄，事不生乱。',
-    '把心收回来，今天该做什么、不该做什么，就会慢慢清楚。',
-  ],
-  [
-    '新对话等着开，今天还没正式开始呢。',
-    '愿你所守不失，所行不偏。',
-    '守住自己的方向，比一时快慢更重要。',
-  ],
-  [
-    '今天还没开新对话吧，来。',
-    '愿你今日光明在内，顺意在外。',
-    '心里亮一点，外面的路也会顺一点。',
-  ],
-  [
-    '开个新对话，今天的账，今天算清。',
-    '愿你今日看得清，守得住，等得到。',
-    '不抢、不乱、不急，真正属于你的机会不会错过。',
-  ],
-  [
-    '新的一天，新对话，心也新一新。',
-    '愿你今日不被杂音牵走，只随其机。',
-    '该静的时候静，该动的时候动，别把自己交给噪音。',
-  ],
-  [
-    '今天的对话，还没开始——开吧。',
-    '愿你今日判断有根，进退有度。',
-    '先稳住心，再看清势，今天自然会比昨天更好。',
-  ],
-  [
-    '新对话开起来，今天从这里走。',
-    '愿你今日心稳手稳，诸事顺行。',
-    '手上不乱，心里不浮，很多事就已经成了一半。',
-  ],
-  [
-    '开个新对话，给今天一个干净的容器。',
-    '愿你今日不困一隅，自见全局。',
-    '眼前再窄，也别把自己活成只剩眼前。',
-  ],
-  [
-    '今天的第一件事：开个新对话。',
-    '愿你今日所思不乱，所行不偏。',
-    '先把内心摆正，今天的每一步都会更稳。',
-  ],
-  [
-    '新对话，新的一页，翻过来。',
-    '愿你今日见势而定，顺势而行。',
-    '不和世界硬拧，也不轻易随波逐流。',
-  ],
-];
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
-const pick = lines[Math.floor(Math.random() * lines.length)].join('\n') + '\n扎西德勒，吉祥如意！🪷🌿🪷';
+const PROMPT = `你是才为的私人助手。每天早上 9:30，给才为发一条飞书消息，提醒他新建对话，同时送上今天的祝福。
 
-execFileSync('openclaw', ['message', 'send', '--channel', 'feishu', '--target', 'user:ou_2e94f4d90060ddc13d0bd33bbd5ffa78', '--message', pick], {
-  stdio: 'inherit',
-});
+格式（严格遵守）：
+- 第一行：提醒新建对话。语气自然，像人说话，不生硬，不说"提醒新建对话"这种标签式文案。可以有温度，有点小幽默，但不轻浮。
+- 第二行：禅意祝福，以"愿你"开头，简短有力。
+- 第三行：收束句，1-2句，有定力，有方向感。
+- 第四行固定：扎西德勒，吉祥如意！🪷🌿🪷
+
+注意：
+- 不要用"十点了"，提醒时间是 9:30
+- 不要加解释、引号、标题、markdown
+- 直接输出四行纯文本，不多不少`;
+
+function callAnthropic() {
+  return new Promise((resolve, reject) => {
+    const body = JSON.stringify({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 256,
+      messages: [{ role: 'user', content: PROMPT }],
+    });
+
+    const req = https.request({
+      hostname: 'api.anthropic.com',
+      path: '/v1/messages',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': ANTHROPIC_API_KEY,
+        'anthropic-version': '2023-06-01',
+      },
+    }, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => {
+        try {
+          const parsed = JSON.parse(data);
+          const text = parsed?.content?.[0]?.text?.trim();
+          resolve(text || '');
+        } catch (e) {
+          reject(e);
+        }
+      });
+    });
+
+    req.on('error', reject);
+    req.write(body);
+    req.end();
+  });
+}
+
+async function main() {
+  let message;
+
+  try {
+    message = await callAnthropic();
+  } catch (e) {
+    // fallback
+    message = '新对话开起来，今天从这里走。\n愿你心有定处，脚下有路。\n守住自己的方向，比一时快慢更重要。';
+  }
+
+  if (!message.includes('扎西德勒')) {
+    message += '\n扎西德勒，吉祥如意！🪷🌿🪷';
+  }
+
+  execFileSync('openclaw', [
+    'message', 'send',
+    '--channel', 'feishu',
+    '--target', 'user:ou_2e94f4d90060ddc13d0bd33bbd5ffa78',
+    '--message', message,
+  ], { stdio: 'inherit' });
+}
+
+main();
