@@ -32,7 +32,7 @@
 | 文件 | 作用 |
 |------|------|
 | `TRADINGVIEW.md` | 缠论 GBP/USD 分析协议(自动加载,勿覆盖) |
-| `tradingview/chan-definitions.md` | 缠论形式化定义手册(每次分析前必须 read) |
+| `tradingview/chan-definitions.md` | 缠论形式化定义手册（最终版，34 章节 / 1086 行；v1/v2 保留在同目录，每次分析前必须 read） |
 | `tradingview/audit-checklist.md` | 分析审计清单(用户说"审计"时 read) |
 | `tradingview/chan-theory-lessons-*.md` | 原始课程文档(按需 read) |
 | `memory/YYYY-MM-DD.md` | 每日交易记录 |
@@ -72,16 +72,16 @@
 
 - 单笔成交:`trades/YYYY-MM-DD-HHMM-方向.md`
 - 每日分析:`memory/trade-YYYY-MM-DD.md`
-- 图片:`images/YYYY-MM-DD/chart_xxx.jpg`,MD 里用 `|960` 统一宽度
+- 图片:`images/YYYY-MM-DD/chart_xxx.jpg`,MD 里用 `|1300` 统一宽度
 - 风格:简洁,无表格,无彩色块,参考 `trades/2026-03-23-demo-short.md`
 
 ---
 
 ## 工具与设置
 
-- 模型:Sonnet(日常)/ Opus(图表分析,分析后自动切回)
+- **阿里云默认模型**:`videnx/gpt-5.4`；图表分析需用户前台 `/model anthropic/claude-opus-4-6` 切换，Opus 已确认执行后才进入正式分析；5.4 异常时降级到 `anthropic/claude-sonnet-4-6`
 - **切换模型必须用正确字符串**:Sonnet = `anthropic/claude-sonnet-4-6`,Opus = `anthropic/claude-opus-4-6`(不带日期后缀!带日期后缀会调用旧版本,价格更贵)
-- 图表分析回复顶部必须标注:`🧠 模型:Claude Opus 4.6`
+- **`🧠 模型:Claude Opus 4.6` 标注规则**:仅在 Opus **已确认执行**（前台可见切模成功回执）后才能写，不是固定文案
 - compaction targetRatio:0.3(已写入 openclaw.json)
 - Chan Theory 指标:¥300/月,下个月到期,暂定不续费
 - 指标设置:严格包含-STRICT + 严格延续-STRICT + 宽笔-LOOSE
@@ -95,7 +95,7 @@
 - **角色调整**:阿里云服务器为主力 OpenClaw,本机(Mac)为备用 OpenClaw
 - **本机规则**:关闭所有 heartbeat;不生成每日 `trade` 交易文件;交易记录、交易分析文件、主工作流统一由阿里云服务器负责
 - **Git 提交标记规则**:阿里云提交前缀 `[阿里云]`,本地提交前缀 `[本地]`
-- **交易分析执行纪律**:交易/图表/行情分析不得擅改既有模板、风格和流程;必须按 12 步固定流程执行(切 Opus → 读两个协议文件 → 固定模板分析 → 切回 `videnx/gpt-5.4` → 更新日志/图片/daily memory → commit → push)
+- **交易分析执行纪律**:交易/图表/行情分析不得擅改既有模板、风格和流程;必须按 12 步固定流程执行——先做交易图识别与 Opus 准入检查（第 1-2 步），不满足则直接拦截并提示用户 `/new` + `/model anthropic/claude-opus-4-6`；通过准入后才读两个协议文件 → 固定模板分析 → 提示用户 `/model videnx/gpt-5.4` 切回 → 用户发"存档"后执行后台归档（更新日志/图片/daily memory → commit → push）
 - **状态播报必须真实**:`🧠 模型:Claude Opus 4.6`、`已读取文件`、`已切回模型`、`已更新日志`、`已 commit`、`已 push` 等文字只能在真实完成该步骤后才能说,不能当固定文案使用
 - **分析原文保真**:交易分析日志中的分析正文,以飞书当次实际回复原文为准,尽量原样入档;补充内容只能追加在后,不得改写原分析正文
 - **图文排版规则**:交易分析与日志统一采用"4H图→4H分析→1H图→1H分析→15M图→15M分析→最终结论"的结构,方便对图复盘
