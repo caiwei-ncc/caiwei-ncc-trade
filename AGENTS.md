@@ -19,38 +19,16 @@ Don't ask permission. Just do it.
 
 ## 交易日志协议
 
-### 文档类型
+> 完整的交易执行规则（12 步流程、输出模板、归档规范、图片处理）见 `TOOLS.md`。
+> 以下仅保留文件结构概览。
 
-**1. 每日分析日志** `memory/trade-YYYY-MM-DD.md`
-- 当天所有分析，不管几次，全部追加到同一个文件
-- 包含：图片 + 分析结论 + 市场观察
-- 学习复盘用
+### 文件结构
 
-**2. 单笔成交记录** `trades/YYYY-MM-DD-HHMM-short.md` 或 `...-long.md`
-- 用户说"入场了"时立即创建
-- 包含：入场前分析图 + 结论、入场价/止损/止盈、入场后图片（如有）、最终出场结果
-- 文件名带日期时间，方便排序回顾
-
-### 格式规范（已确认）
-- 风格：简洁直接，无表格，无彩色 callout 块
-- 图片宽度：`|1300`（统一，避免因原图分辨率不同导致大小不一）
-- 结构顺序：入场前分析 → 入场 → 结果 → 复盘
-- 参考模板：`trades/2026-03-23-0000-long.md`
-
-### 图片处理
-- 用户通过飞书发的图片自动保存到 `~/.openclaw/media/inbound/`，文件名为 UUID
-- 每次分析完，立即将本次用到的图片复制到 `workspace/images/YYYY-MM-DD/` 并重命名（如 `chart_1_4h.jpg`）
-- MD 文件使用相对路径引用图片（如 `../images/2026-03-25/chart_1_4h.jpg`，memory/ 下一层即可到 images/）
-- 所有文件 commit + push 到 GitHub，Obsidian 和 SourceTree 打开后图文完整可看
-- `~/.openclaw/media/inbound/` 里的原始文件可定期清理，workspace/images/ 才是永久存档
-
-### 文件结构示例
-```
-memory/trade-2026-03-25.md       # 当日分析日志
-trades/2026-03-25-1430-short.md  # 单笔成交记录
-images/2026-03-25/chart_1.jpg
-images/2026-03-25/chart_2.jpg
-```
+| 类型 | 路径 | 用途 |
+|------|------|------|
+| 每日分析日志 | `memory/trade-YYYY-MM-DD.md` | 当天所有分析追加到同一文件 |
+| 单笔成交记录 | `trades/YYYY-MM-DD-HHMM-short/long.md` | 用户说"入场了"时创建 |
+| 分析图片 | `images/YYYY-MM-DD/chart_xxx.jpg` | 从 inbound 复制并重命名，Obsidian wiki-link 引用 |
 
 ## End of Every Session
 
