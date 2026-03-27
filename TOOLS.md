@@ -263,6 +263,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
   则助手**不得继续输出正式交易分析正文**
 - 在上述情况下，助手必须直接提示用户：当前这张 K 线交易图按规则默认应使用 Opus；当前不是 Opus / 未确认 Opus，请先缓存上下文、新建聊天、切到 `anthropic/claude-opus-4-6` 后再重新发图
 - **新规则（2026-03-26 晚再补充）**：以后凡是要求用户切模型的提示，助手都必须顺手附上**可直接复制的 `/model ...` 指令**，不得只写模型名、不写指令
+- **新规则（2026-03-27 补充）**：凡是发给用户的 `/model ...` 或 `/model status` 指令，必须**单独成条发送**，不得夹在长段说明文字里；目的：让用户可以直接整条复制，不需要手动裁切
 - 当前约定的常用切模指令如下：
   - 切到 Opus：`/model anthropic/claude-opus-4-6`
   - 切回默认聊天模型：`/model videnx/gpt-5.4`
