@@ -78,7 +78,7 @@ async function main() {
     message += '\n扎西德勒，吉祥如意！🪷🌿🪷';
   }
 
-  message += '\n\n可直接复制切换模型：\n/model anthropic/claude-sonnet-4-6\n/model videnx/gpt-5.4\n/model anthropic/claude-opus-4-6';
+  message += '\n\n可直接复制切换模型：\n/model anthropic/claude-sonnet-4-6\n/model videnx/gpt-5.4\n/model anthropic/claude-opus-4-6\n/model status';
 
   execFileSync('openclaw', [
     'message', 'send',
