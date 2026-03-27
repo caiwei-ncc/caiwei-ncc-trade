@@ -78,14 +78,28 @@ async function main() {
     message += '\n扎西德勒，吉祥如意！🪷🌿🪷';
   }
 
-  message += '\n\n可直接复制切换模型：\n/model anthropic/claude-sonnet-4-6\n/model videnx/gpt-5.4\n/model anthropic/claude-opus-4-6\n/model status';
-
   execFileSync('openclaw', [
     'message', 'send',
     '--channel', 'feishu',
     '--target', 'user:ou_2e94f4d90060ddc13d0bd33bbd5ffa78',
     '--message', message,
   ], { stdio: 'inherit' });
+
+  const commands = [
+    '/model anthropic/claude-sonnet-4-6',
+    '/model videnx/gpt-5.4',
+    '/model anthropic/claude-opus-4-6',
+    '/model status',
+  ];
+
+  for (const cmd of commands) {
+    execFileSync('openclaw', [
+      'message', 'send',
+      '--channel', 'feishu',
+      '--target', 'user:ou_2e94f4d90060ddc13d0bd33bbd5ffa78',
+      '--message', cmd,
+    ], { stdio: 'inherit' });
+  }
 }
 
 main();
