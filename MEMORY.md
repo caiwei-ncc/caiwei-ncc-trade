@@ -12,7 +12,7 @@
 - **代理**:阿里云服务器部署 sing-box,出站走韩国干净 IP(203.248.81.252:7778),飞书直连
 - **同步**:workspace 通过 GitHub(caiwei-ncc/caiwei-ncc-trade)双端同步,Mac ↔ GitHub ↔ 阿里云
 - **heartbeat**:1小时一次(已从30分钟改为1小时)
-- **每日9点**:cron job 自动发飞书开盘问候,提醒 /new
+- **每日09:30**:cron job 自动发飞书开盘问候（09:30:00 新对话提醒 + 09:30:27 待推进事项）
 
 ## 关于用户
 
@@ -73,7 +73,7 @@
 - 单笔成交:`trades/YYYY-MM-DD-HHMM-方向.md`
 - 每日分析:`memory/trade-YYYY-MM-DD.md`
 - 图片:`images/YYYY-MM-DD/chart_xxx.jpg`,MD 里用 `|1300` 统一宽度
-- 风格:简洁,无表格,无彩色块,参考 `trades/2026-03-23-demo-short.md`
+- 风格:简洁,无表格,无彩色块
 
 ---
 
@@ -87,11 +87,11 @@
 - 指标设置:严格包含-STRICT + 严格延续-STRICT + 宽笔-LOOSE
 
 ### OpenClaw 双端部署
-- **Mac(本机)**:主实例,连接飞书,日常使用
-- **阿里云服务器**(iZmj7cqb1nl6lp5rzrhhpgZ):备用实例,独立部署
+- **阿里云服务器**(iZmj7cqb1nl6lp5rzrhhpgZ):主力实例,独立部署
+- **Mac(本机)**:备用实例,连接飞书,日常轻量使用
 - workspace 通过 GitHub 仓库(caiwei-ncc/caiwei-ncc-trade)同步
 - 阿里云配置 sing-box 代理,出口 IP:203.248.81.252:7778
-- **模型切换规则按主机区分**:阿里云服务器默认用 `videnx/gpt-5.4`,图片/行情/图表分析切 `opus`,5.4 报错时用 `sonnet`;本机(Mac)不启用这套 5.4 规则
+- **模型切换规则按主机区分**:阿里云服务器默认用 `videnx/gpt-5.4`,图表分析需用户前台 `/model anthropic/claude-opus-4-6` 切换且 Opus 准入检查通过后才进入分析,5.4 报错时用 `sonnet`;本机(Mac)不启用这套 5.4 规则
 - **角色调整**:阿里云服务器为主力 OpenClaw,本机(Mac)为备用 OpenClaw
 - **本机规则**:关闭所有 heartbeat;不生成每日 `trade` 交易文件;交易记录、交易分析文件、主工作流统一由阿里云服务器负责
 - **Git 提交标记规则**:阿里云提交前缀 `[阿里云]`,本地提交前缀 `[本地]`

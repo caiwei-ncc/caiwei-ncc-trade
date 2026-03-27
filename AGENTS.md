@@ -35,12 +35,12 @@ Don't ask permission. Just do it.
 - 风格：简洁直接，无表格，无彩色 callout 块
 - 图片宽度：`|1300`（统一，避免因原图分辨率不同导致大小不一）
 - 结构顺序：入场前分析 → 入场 → 结果 → 复盘
-- 参考模板：`trades/2026-03-23-demo-short.md`
+- 参考模板：`trades/2026-03-23-0000-long.md`
 
 ### 图片处理
 - 用户通过飞书发的图片自动保存到 `~/.openclaw/media/inbound/`，文件名为 UUID
 - 每次分析完，立即将本次用到的图片复制到 `workspace/images/YYYY-MM-DD/` 并重命名（如 `chart_1_4h.jpg`）
-- MD 文件使用相对路径引用图片（如 `../../images/2026-03-25/chart_1_4h.jpg`）
+- MD 文件使用相对路径引用图片（如 `../images/2026-03-25/chart_1_4h.jpg`，memory/ 下一层即可到 images/）
 - 所有文件 commit + push 到 GitHub，Obsidian 和 SourceTree 打开后图文完整可看
 - `~/.openclaw/media/inbound/` 里的原始文件可定期清理，workspace/images/ 才是永久存档
 
